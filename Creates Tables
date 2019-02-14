@@ -1,0 +1,27 @@
+CREATE TABLE typeproduct_taxation(
+idtypeproduct serial,
+idtaxation serial,
+percentual FLOAT NOT NULL,	
+created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+updated_AT DATE,
+PRIMARY KEY(idtypeproduct, idtaxation)	
+);
+
+
+
+CREATE TABLE TypeProduct(
+ id serial PRIMARY KEY,
+ name VARCHAR (50) UNIQUE NOT NULL,
+ description VARCHAR (50) NOT NULL,
+ created_at DATE NOT NULL DEFAULT CURRENT_DATE
+ updated_AT DATE 	
+);
+
+CREATE TABLE product(
+ id serial PRIMARY KEY,
+ name VARCHAR (50) UNIQUE NOT NULL,
+ description VARCHAR (50) NOT NULL,
+ unitValue FLOAT UNIQUE NOT NULL,
+ quantity INTEGER NOT NULL,
+ idtypeProduct serial NOT NULL
+);

@@ -48,12 +48,15 @@ class App{
 			header("Location: ".LOCAL_HOST."user/login"); 
 			exit; 
 			}*/
-		self::init();
-		Request::init();
+		/*self::init();
+		Request::init();*/
 		
-		self::$controller = Request::getController();
-		self::$action = Request::getAction();
+		self::$controller = Request::Controller();
+		self::$action = Request::Action();
 
+        
+        
+        /*
 		session_start();
 
 		if(!isset($_SESSION["id_usuario"]) || !isset($_SESSION["nome_usuario"])) 
@@ -61,7 +64,7 @@ class App{
 				self::$controller='UserController';
 				self::$action='login';
 			}
-		
+		*/
 
 		if(isset($_GET["k"]) && strpos($_GET["k"],	"json") ) {
 
@@ -71,7 +74,7 @@ class App{
 				include substr($_GET['k'], strpos($_GET['k'], "/json" ) ) ;
 // exit;
 			}else{
-
+                       /* echo ("<p>".CONTROLLERS.self::$controller.".php</p>");*/
 
 						if(file_exists(CONTROLLERS.self::$controller.".php" )){
 								
@@ -80,7 +83,7 @@ class App{
 					
 							if(method_exists(self::$controller,self::$action)){
 								$action = self::$action;
-								self::$controller->$action(Request::getParameters()/*(!empty(self::$exploded[4]) ? self::$exploded[4] : null)*/ );
+								self::$controller->$action(Request::Parameters()/*(!empty(self::$exploded[4]) ? self::$exploded[4] : null)*/ );
 							}elseif(isset($_GET["k"]) && strpos($_GET["k"],	"json") ) {
 
 								// echo "<h3>In App action</h3>";
