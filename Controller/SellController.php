@@ -2,17 +2,18 @@
 
 require_once APP."Controller.php";
 
-class SellController extends Controller{    
- 
-    public function cadastrar(){        
-        parent::View('cadastrar',parent::model());
+class SellController extends Controller{     
+  
+    public function index(){
+        parent::View('tosell',parent::model());
     }
     
-    public function index(){
-        parent::View('index',parent::model());
+    public function toSell(){
+        parent::View('tosell',parent::model());
     }
     
     public function save($id="-1"){    
+  
         foreach($_POST as $k => $v){
             parent::model()->$k = $v;
         }
@@ -23,6 +24,6 @@ class SellController extends Controller{
             parent::model()->update($id);
         }
         
-        // header("Location: /".DOMAIN."/index"); 
+        header("Location: /".DOMAIN."/index"); 
     }
 }

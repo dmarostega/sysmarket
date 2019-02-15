@@ -65,6 +65,8 @@ class App{
 				self::$action='login';
 			}
 		*/
+        
+//        echo json_encode($_GET)
 
 		if(isset($_GET["k"]) && strpos($_GET["k"],	"json") ) {
 
@@ -74,7 +76,7 @@ class App{
 				include substr($_GET['k'], strpos($_GET['k'], "/json" ) ) ;
 // exit;
 			}else{
-                       /* echo ("<p>".CONTROLLERS.self::$controller.".php</p>");*/
+//                        echo ("<p>".CONTROLLERS.self::$controller.".php AND ".$_SERVER["REQUEST_URI"]."</p>");
 
 						if(file_exists(CONTROLLERS.self::$controller.".php" )){
 								
@@ -96,7 +98,7 @@ class App{
 								echo "<p>Não existe essa Action</p>";
 							}			
 						}else{ 
-							echo "<p> Não existe arquivo controller....</p>";
+							echo "<p> Não existe arquivo controller....</p><h3>".CONTROLLERS.self::$controller.".php </h3>";
 						}
 			} //else 'k'
 	}

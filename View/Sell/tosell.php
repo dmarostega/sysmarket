@@ -1,5 +1,3 @@
-<?php header("Location:sell/tosell"); exit;?>
-
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -91,18 +89,81 @@
           /**/  var quantity =  $(this).prev().val();
                 var name =  $(this).parent().prev().children().text();
                 
-                var childs = $("#tableSell tbody tr#prod"+idProduct+"").children(":first-child").text();
-               
-//                alert('Child: '+childs+' --> '+idProduct);
+                
                 if(childs != idProduct &&  quantity > 0){
-                $("#tableSell tbody").append("<tr id='prod"+idProduct+"'>" +
+
+
+                    var childs = $("#tableSell tbody tr#prod"+idProduct+"").children(":first-child").text();               
+                    var data = {productID: idProduct, quantity: quantity };                
+                    $.post( "http://localhost/market/json/getCalcSell.php",
+                            data,                                                 
+                            'json'
+                      )
+                    .done(function(response){
+                        var resData = JSON.parse(response);
+                        $("#tableSearch tbody").empty();
+                        $.each(resData, function( index, value ) {
+                                $("#tableSell tbody").append("<tr id='prod"+idProduct+"'>" +
+                                                    "<td>"+idProduct+"<input type='hidden' name='products[]' value='"+idProduct+"' ></td>"+
+                                                    "<td>"+name+"</td>"+
+                                                    "<td><input class='quantity' type='text' name='quantity["+idProduct+"]'   value='"+quantity+"' ></td>"+
+                                                    "<td>"+value.totalproductvalue+"</td>"+
+                                                    "<td>"+value.totaltax+"</td>"+
+                                                    "<td class='quantityTax'>"+value.quantitytax+"</td>"+
+                                                    "<td class='totalitem'>"+value.totalitem+"</td>"+
+                                                    "<td><button type='button' > X </button></td>"+
+                                                "</tr>"
+                                               );
+                        });                     
+                    })
+                    .fail(function(errdata){
+                        alert('Falha na cominicação!');
+                    })    
+                    .always(function() { 
+                         ///*alert(*/$("#tableSell tbody:last-child").children().children(":last-child").prev().css('background','red');
+                       // alert($("#tableSell tbody:last-child").children().children(":last-child").prev().lenght());
+                  /*
+                  
+                  function ocultar() {
+  var table = $('table.grid');
+  var i = 0;
+  table.find('tbody > tr').each(function() {
+    if ($(this).find('td').eq(4).text() == '') {
+      $(this).hide();
+    } else {     
+        $(this).find('td').eq(0).text(++i);
+    }
+  });
+}*/      
+                        
+                        var total=0;
+                        var quantityTax=0;
+                        $("#tableSell").find('tbody > tr').each(function(indice){
+                           // alert(indice+" --> "+$(this).find('td').eq(6).text());
+                            total = parseFloat(total)+parseFloat($(this).find('td').eq(6).text());
+                            quantityTax = parseFloat(quantityTax)+parseFloat($(this).find('td').eq(5).text());
+//                            alert(total);
+                            $("#quantityTax").text(quantityTax.toString());
+                            $("#fulltotal").text(total.toString());
+                        }); /*end tablesell find tr*/
+                        
+    //                    alert('complete');
+                    });//end always; //End post
+                }
+
+                
+                
+                
+//                alert('Child: '+childs+' --> '+idProduct);
+//                if(childs != idProduct &&  quantity > 0){
+               /* $("#tableSell tbody").append("<tr id='prod"+idProduct+"'>" +
                                                 "<td>"+idProduct+"<input type='hidden' name='products[]' value='"+idProduct+"' ></td>"+
                                                 "<td>"+name+"</td>"+
                                                 "<td><input class='quantity' type='text' name='quantity["+idProduct+"]'   value='"+quantity+"' ></td>"+
                                                 "<td><button type='button' > X </button></td>"+
                                             "</tr>"
-                                           );
-                }
+                                           );*/
+//                }
                 
                 $("#searchProduct").val('');
                 $(this).parent().parent().remove();
@@ -110,6 +171,14 @@
             $('#tableSell').on('click', 'button', function() {
                 if( confirm(    'Remover o item ' + $(this).parent().prev().prev().text()   )==true ){
                    $(this).parent().parent().remove();
+                    var total=0;
+                        var quantityTax=0;
+                        $("#tableSell").find('tbody > tr').each(function(indice){
+                            total = parseFloat(total)+parseFloat($(this).find('td').eq(6).text());
+                            quantityTax = parseFloat(quantityTax)+parseFloat($(this).find('td').eq(5).text());
+                            $("#quantityTax").text(quantityTax.toString());
+                            $("#fulltotal").text(total.toString());
+                        }); /*end tablesell find tr*/
                 }
             }); /*  end tableSell onclick   */
             
@@ -143,10 +212,19 @@
                                     <td>Code</td>
                                     <td>Produto</td>
                                     <td>Quantidade</td>
+                                    <td>Subtotal</td>
+                                    <td>Taxas</td>
+                                    <td>Qtd. Taxas</td>
                                     <td>Total</td>
                                 </tr>
                             </thead>
-                            <tfoot></tfoot>
+                            <tfoot>  
+<!--                                <tr></tr>-->
+                                <tr>  <td colspan="5">&nbsp;</td>
+                                    <td  ><span id="tquantityTax"></span></td>
+                                    <td><span id="fulltotal"></span></td>
+                                </tr>
+                            </tfoot>
                             <tbody>
                             </tbody>
                         </table>
@@ -165,7 +243,9 @@
                                     <td>Total</td>
                                 </tr>
                             </thead>
-                            <tfoot></tfoot>
+                            <tfoot>
+                              
+                            </tfoot>
                             <tbody>
 
                             </tbody>

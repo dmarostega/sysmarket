@@ -31,7 +31,6 @@ $tax = DB::results("SELECT * FROM taxation");
         </script>
         -->
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!--  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         -->
@@ -65,21 +64,21 @@ $tax = DB::results("SELECT * FROM taxation");
         
     </head>
     <body>
-        <nav>
+         <nav>
             <ul>
                 <li>
-                    <a href="index">Cadastros</a>
+                    <a href="#">Cadastros</a>
                     <ul>
-                        <li>Produtos</li>
-                        <li>Tipos de Produto</li>
-                        <li>Impostos</li>
+                        <li><a href="/<?php echo DOMAIN;?>/product/cadastrar">Produtos</a></li>
+                        <li><a href="/<?php echo DOMAIN;?>/typeproduct/cadastrar">Tipos de Produto</a></li>
+                        <li><a href="/<?php echo DOMAIN;?>/taxation/cadastrar">Impostos</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="vendas">Vender</a>
+                    <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>
                 </li>                
             </ul>
-        </nav>        
+        </nav>       
         <main>
             <form action="save" method="POST">
                 <label for="id">Código</label>

@@ -23,6 +23,6 @@ class ProductController extends Controller{
             parent::model()->update($id);
         }
         
-        header("Location: /".DOMAIN."/index"); 
+        header("Location: /".DOMAIN."/Product/cadastrar"); 
     }
 }

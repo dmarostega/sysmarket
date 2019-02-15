@@ -1,29 +1,23 @@
 <?php
 
 require_once APP."Model.php";
-//require_once ""
 
 class SellModel extends Model{
     
     public $products = array();
+    public $quantity = array();
 
     public function insert(){ 
-
-        $strInsert = "INSERT INTO ".$this->table." (name,description) VALUES (:name,:description)";
-        DB::insert($strInsert,array($this->name,$this->description));
-
-        $strInsert = "INSERT INTO sell_product (idtypeproduct, idtaxation, percentual) VALUES (:idtypeproduct,:idtaxation,:percentual)";
         
-        foreach($this->$products as $k => $idProduct){
-              DB::insert($strInsert,array(DB::getLastInsertId(),$idProduct,$this->percentual[$idTax]));
+        $strInsert = "INSERT INTO ".$this->table." (date) VALUES(:date)";
+        DB::insert( $strInsert,array(date("Y-m-d")  ));
+
+        $strInsert = "INSERT INTO sell_product (idsell, idproduct, quantity) VALUES (:idsell,:idproduct,:quantity)";
+        foreach($this->products as $k => $idProduct){
+            DB::insert($strInsert,array(DB::getLastInsertId(),$idProduct,$this->quantity[$idProduct]));
         }      
     }
     
     public function update($id){        
     }
-    
-        
-
-
-    
 }

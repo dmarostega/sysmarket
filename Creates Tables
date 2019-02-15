@@ -1,3 +1,19 @@
+-- Table: public.taxation
+
+-- DROP TABLE public.taxation;
+
+CREATE TABLE public.taxation
+(
+    id integer NOT NULL ,
+    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    description character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL DEFAULT CURRENT_DATE,
+    updated_at date,
+    CONSTRAINT taxation_pkey PRIMARY KEY (id),
+    CONSTRAINT taxation_name_key UNIQUE (name)
+)
+
+
 CREATE TABLE typeproduct_taxation(
 idtypeproduct serial,
 idtaxation serial,
@@ -21,7 +37,28 @@ CREATE TABLE product(
  id serial PRIMARY KEY,
  name VARCHAR (50) UNIQUE NOT NULL,
  description VARCHAR (50) NOT NULL,
- unitValue FLOAT UNIQUE NOT NULL,
+ unitValue FLOAT NOT NULL,
  quantity INTEGER NOT NULL,
  idtypeProduct serial NOT NULL
 );
+
+DROP TABLE public.sell;
+CREATE TABLE public.sell
+(
+    id serial PRIMARY KEY,
+    date DATE NOT NULL DEFAULT CURRENT_DATE,	
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    updated_at DATE
+)
+
+DROP TABLE public.sell_product;
+
+CREATE TABLE public.sell_product
+(
+    idsell serial NOT NULL,
+    idproduct serial NOT NULL,
+    quantity integer NOT NULL,   
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    updated_AT DATE, 
+    CONSTRAINT sell_product_pkey PRIMARY KEY (idsell, idproduct)
+)
