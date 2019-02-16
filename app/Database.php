@@ -10,8 +10,7 @@ class DB{
         
 				self::$instance = new PDO($strCon);
 //				self::$instance = new PDO('pgsql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
-//				self::$instance = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
-				/**/self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);				
 			}catch(PDOException $e){
 				echo "Erro de Conexão: " . $e->getMessage();
@@ -37,11 +36,7 @@ class DB{
 	}
     
     public static function update($sqlquery,$bindparams=array()){
-        
-        var_dump($sqlquery,$bindparams);
-//        exit;
-//        exit;
-        $stmt = self::prepare($sqlquery);
+         $stmt = self::prepare($sqlquery);
 		$stmt->execute($bindparams);		
 	}
     

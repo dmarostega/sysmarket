@@ -105,7 +105,6 @@
                 
                 <div class="buttons-box">
                     <button class="btn btn-save" type="submit" >Salvar</button>
-    <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
                     <button class="btn btn-cancel" onclick="window.location.href='/<?php echo DOMAIN; ?>/product/listar'" type="button" >Cancelar</button>                
                 </div>
             </form>            

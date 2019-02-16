@@ -167,7 +167,6 @@ input[type="text"]:focus,input[type="number"]:focus{
     font-weight: bold;
     background: #161267;
     border-radius:5px;
-/*    border: 1px solid blue;*/
     transition: background .4s;
 }
 .drop-down ul{
@@ -194,7 +193,6 @@ input[type="text"]:focus,input[type="number"]:focus{
     width:220px;
 }
 .drop-down a:hover{
-/*    color: red;*/
 } 
 .drop-down a:hover + ul,.drop-down ul:hover {
     display: block;

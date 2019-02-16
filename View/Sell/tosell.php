@@ -14,19 +14,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
-            
-//            alert('Carregamento de Teste!!!!');
-        
-            /*            
-            <div class="search">
-                            <label>Digite sua busca: </label>
-                            <input id="inputSearch" type="text" >
-                        </div>
-                        <div id="serachRes">            
-            */
-            
-//            $("form").submit(function(){});
-                
+
              /*  end form submit event*/
             $(".btn-save").click(function(event){               
                 if(!$("#tableSell").find('tbody > tr').length > 0){
@@ -35,6 +23,7 @@
                 }
                 
             });/*end btn-save funtion*/
+            
             /*  limpa tudo  */
             $(".btn-cancel").click( function() {
                 $("#inputSearch").empty();
@@ -45,12 +34,9 @@
             });/*end btn-cancel event*/
         
             $("#inputSearch").keyup(function(){ 
-//            $("#searchProduct").keyup(function(){ 
-//                alert('sisi');
                 
                 if($("#inputSearch").val()!=""){
                     var data =  {searchProduct: $("#inputSearch").val()};
-    //                var data =  {searchProduct: $("#searchProduct").val()};
 
                     $.post( "http://localhost/market/json/getProduct.php",
                             data,                                                 
@@ -59,10 +45,6 @@
                     .done(function(response){
                         var resData = JSON.parse(response);
                         
-                        
-//                        alert("Redata: "+resData.length);
-
-
                         if(parseInt(resData.length)>0){
                             $(".error").text('');
                             $("#resSearch").empty();
@@ -79,19 +61,7 @@
                             }); 
                         }else{
                             $(".error").text("Nenhum produto encontrado!!");
-                        }
-
-
-                     /*   $("#tableSearch tbody").empty();
-                        $.each(resData, function( index, value ) {
-                           $("#tableSearch tbody").append("<tr>"+
-                                                            "<td>"+value.id+"</td>"+
-                                                            "<td><span>"+value.name+"</span></td>"+
-                                                            "<td><input type='text' >"+
-                                                                 "<button type='button'><span>Inserir</span></button>"+
-                                                            "</td>"+
-                                                          "</tr>");  
-                        });   */                  
+                        }              
                     })
                     .fail(function(errdata){
                         alert('erro denovo');
@@ -100,27 +70,6 @@
     //                    alert('complete');
                     });//end always; //End post
 
-                
-                
-//                alert($("#searcProduct").val());
-            /*   $.ajax({
-                    type:'post',
-                    dataType:'json',
-                    url:'json/getProduct.php',
-                    data:{searchProduct: $("#searcProduct").val()}                                    
-                })  // end ajax
-                .done(function(){ 
-                    alert("oi");
-                })// end done
-                .fail(function(failData){
-                    $.each( failData, function( key, val ) {
-                    alert( "<li id='" + key + "'>" + val.length + "</li>" );
-                  });
-                })//  end fail    
-                .always(function() { 
-                
-                });//end always
-                */ 
                 }   /*  end if function empty*/
             }); /*  end keydown*/
       
@@ -130,7 +79,6 @@
                 var name =  $(this).parent().prev().children().text();
                 
                 var hasElement = document.querySelector("#prod"+idProduct);
-//                alert("RES: ["+idProduct+"]"+el);
                 if(hasElement!=null){
                     hasElement.remove();
                 }
@@ -147,9 +95,6 @@
                         var resData = JSON.parse(response);
                         $("#tableSearch tbody").empty();
                         $.each(resData, function( index, value ) {
-                            
-//                            alert(typeof parseFloat(value.totalproductvalue) );
-                            
                             
                                 $("#tableSell tbody").append("<tr id='prod"+idProduct+"'>" +
                                                     "<td>"+idProduct+"<input type='hidden' name='products[]' value='"+idProduct+"' ></td>"+
@@ -169,59 +114,27 @@
                         alert('Falha na comunicação!');
                     })    
                     .always(function() { 
-                        $("#inputSearch").val("");
-
-                         ///*alert(*/$("#tableSell tbody:last-child").children().children(":last-child").prev().css('background','red');
-                       // alert($("#tableSell tbody:last-child").children().children(":last-child").prev().lenght());
-                  /*
-                  
-                  function ocultar() {
-  var table = $('table.grid');
-  var i = 0;
-  table.find('tbody > tr').each(function() {
-    if ($(this).find('td').eq(4).text() == '') {
-      $(this).hide();
-    } else {     
-        $(this).find('td').eq(0).text(++i);
-    }
-  });
-}*/      
+                        $("#inputSearch").val("");                              
                         
                         var total=0;
                         var quantityTax=0;
                         var fullTotalTax=0;
 
                         $("#tableSell").find('tbody > tr').each(function(indice){
-                           // alert(indice+" --> "+$(this).find('td').eq(6).text());
-                        //    alert(quantityTax+" ---  "+$(this).find('td').eq(5).text());
                             quantityTax = parseInt(quantityTax)   +   parseInt( $(this).find('td').eq(4).text() );
                             fullTotalTax = parseFloat(fullTotalTax)+parseFloat($(this).find('td').eq(5).text());
                             total = parseFloat(total)   +   parseFloat($(this).find('td').eq(6).text());                            
                     }); /*end tablesell find tr*/
-//                         alert(quantityTax.toString());
                         
                             $("#fullTotalTax").text(fullTotalTax.toFixed(2).toString()+"%");
                             $("#tquantityTax").text(quantityTax.toString());
                             $("#fulltotal").text("R$ "+total.toFixed(2).toString());
-    //                    alert('complete');
                     });//end always; //End post
                      $("#searchProduct").val('');
                     $(this).parent().parent().remove();
                 }
 
-                
-                
-                
-//                alert('Child: '+childs+' --> '+idProduct);
-//                if(childs != idProduct &&  quantity > 0){
-               /* $("#tableSell tbody").append("<tr id='prod"+idProduct+"'>" +
-                                                "<td>"+idProduct+"<input type='hidden' name='products[]' value='"+idProduct+"' ></td>"+
-                                                "<td>"+name+"</td>"+
-                                                "<td><input class='quantity' type='text' name='quantity["+idProduct+"]'   value='"+quantity+"' ></td>"+
-                                                "<td><button type='button' > X </button></td>"+
-                                            "</tr>"
-                                           );*/
-//                }
+   
                 
                
             }); /*  end table seach onclick*/
@@ -330,33 +243,12 @@
                         <div id="resSearch">
                         
                         </div>
-                      <!--   <table id="tableSearch" class="table table-clear" border="1">
-                            <caption>Selecionar Produto</caption>
-                            <thead>
-                                <div class="search">
-                                    <label>Digite Codigo ou Nome do Produto</label>
-                                    <input type="text" id="searchProduct" placeholder="Digite Codigo ou Nome do Produto" >
-                                </div>
-                                <tr>
-                                    <td>Code</td>
-                                    <td>Produto</td>
-                                    <td>Quantidade</td>
-                                    <td>Total</td>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                              
-                            </tfoot>
-                            <tbody>
-
-                            </tbody>
-                        </table>-->
+                   
                     </div>
                 </div>
                 
                 <div class="buttons-box">
                     <button class="btn btn-save" type="submit" >Salvar</button>
-    <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
                     <button class="btn btn-cancel"  type="button" >Cancelar</button>                
                 </div>
             </form>            

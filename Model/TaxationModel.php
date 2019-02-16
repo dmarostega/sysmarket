@@ -12,8 +12,7 @@ class TaxationModel extends Model{
    
     public function update($id){
  $strUpdate = "UPDATE ".$this->table." SET name = :name,description = :description, updated_at = :updated WHERE id = :id; ";
-       
-//        var_dump($id);exit;
+
         DB::update($strUpdate,array(
                         $this->name,
                         $this->description,

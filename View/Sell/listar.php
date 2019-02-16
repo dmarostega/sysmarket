@@ -71,8 +71,6 @@
             <table class="table">
                 <thead></thead>
                 <tfoot>     
-<!--                        <td colspan="3">&nbsp;</td>-->
-                    
                 </tfoot>
                 <tbody>
                    <?php 
@@ -86,7 +84,6 @@
                             <td><?php echo $seller->totaltax?>%</td>
                             <td>R$ <?php echo  number_format($seller->total, 2, ',', '.'); ?></td>
                             <td>
-<!--                                <a type="button" href="editar?id=<?php// echo $seller->id; ?>" ><span>Editar</span></a>-->
                                 <a type="button" class="btn btn-cancel" href="delete?id=<?php echo $seller->id; ?>"  ><span>Excluir</span></a>                                
                             </td>
                         </tr>
@@ -102,7 +99,6 @@
                 </div>
                 <div class="col col-1-3 ">
                         <span>Total: <?php echo number_format($totalValorDeVendas, 2, ',', '.'); ?></span>
-<!--                        <span>Taxas: <?php //echo  $totalTaxaDeVendas; ?></span>-->
                 </div>
                 
             </div>

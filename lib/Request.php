@@ -13,8 +13,6 @@ class Request {
     
     private static function init(){
         self::$url = $_SERVER["REQUEST_URI"];
-               
-//        var_dump(self::$url);
 
         $blown=explode("/",self::$url);
         
@@ -36,13 +34,7 @@ class Request {
                     list($key,$value) = explode("=",$v);
                     self::$parameters[$key] = $value;
             }
-        }
-        
-//        var_dump(self::$parameters);
-            //self::$action = self::$action."Model";
-        /*
-        /venda?ola=111&dois=34
-        */
+        }   
     }
     
     public static function Controller(){

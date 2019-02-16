@@ -62,11 +62,4 @@ if( isset($_POST['productID']) && !empty($_POST['productID'])  &&
 }else{    
     $resSearch = array('Err'=>'Acesso negado');
 }
-
-
-//echo "<pre>";
-
-/*var_dump($aux);
-var_dump($resSearch);*/
-//echo "</pre>";
 echo json_encode($resSearch);

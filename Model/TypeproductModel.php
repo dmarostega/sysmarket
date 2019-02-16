@@ -1,7 +1,6 @@
 <?php
 
 require_once APP."Model.php";
-//require_once ""
 
 class TypeproductModel extends Model{
     
@@ -9,7 +8,7 @@ class TypeproductModel extends Model{
     public $percentual = array();
 
     public function insert(){ 
-//        var_dump($this->table);
+
         $strInsert = "INSERT INTO ".$this->table." (name,description) VALUES (:name,:description)";
         DB::insert($strInsert,array($this->name,$this->description));
 

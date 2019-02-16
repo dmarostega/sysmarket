@@ -29,38 +29,11 @@ class SellController extends Controller{
         }else{
             parent::model()->update(intval($id["id"]));
         }    
-        
-        
-    /*    foreach($_POST as $k => $v){
-            parent::model()->$k = $v;
-        }
-        
-        if($id!="-1"){
-            parent::model()->insert();
-        }else{
-            parent::model()->update($id);
-        }
-        */
+     
         header("Location: /".DOMAIN."/sell/tosell"); 
     }
     
-    public function listar(){
-        
-        /*    public function findFull($cols="*",$where="",$limit=""){
-*/
-/*$strSell="SELECT
-                s.id as idSell,
-                (p.unitvalue * sp.quantity)+((p.unitvalue * sp.quantity)*(sum(tpt.percentual)/100)) as totalItems
-            FROM sell as s
-                left join sell_product as sp ON (sp.idsell = s.id )
-                inner JOIN product as p ON (sp.idproduct = p.id )                      
-                right join typeproduct as tp ON (tp.id = p.idtypeproduct)
-                left join typeproduct_taxation as tpt ON (tpt.idtypeproduct = tp.id)
-                left join taxation as t ON (t.id = tpt.idtaxation)
-               
-                GROUP BY s.id,p.id,sp.quantity";*/
-        
-        
+    public function listar(){        
        $strSell = " SELECT
                         s.id as id,
                         sum(tpt.percentual) as totalitemtax,
@@ -76,12 +49,6 @@ class SellController extends Controller{
 						GROUP BY s.id,p.id,sp.quantity--,tpt.percentual
 						ORDER BY s.id; ";
 
-        
-        //$data=array();
-      /*  echo "<pre>";
-        var_dump($strSell,parent::model()->findGeneric($strSell) );
-        echo "</pre>";*/
-//        exit();
         $sell=0;
         $data = null;
         
@@ -97,11 +64,6 @@ class SellController extends Controller{
             $data[$sell]->totaltax = sum($data[$sell]->totaltax,$sellObj->totalitemtax);            
             $data[$sell]->total = sum($data[$sell]->total,$sellObj->totalitems);            
         }
-        
-/*          echo "<pre>";
-        var_dump(  $data );
-        echo "</pre>";
-        */
         parent::View('listar',$data);
     }
     

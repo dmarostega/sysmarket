@@ -13,47 +13,12 @@ $tax = DB::results("SELECT * FROM taxation");
         <meta name="description" content="Sistema para mercados">
         <meta name="keywords" content="mercado, sistema, vendas de produtos">
          <link  rel="stylesheet" type="text/css"  href="../view/css/personalite.css">       
-        
-    <!--    <script type="text/javascript">
-            window.onload = function(){
-                $.ajax({
-                    type:'POST',
-                    dataType:'json',
-                    url:'json/getTaxation.php',
-                    
-                }).done(function(response){
-                    alert("oi");
-        
-                }).fail(function(data){
-                        alert("ERR: "+data.statusText);
-                    }); /*   end done function ajax    */
-            }
-        </script>
-        -->
-        
-      <!--  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        -->
-        
-            
-  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    </script>-->
-  <!--  <script type="text/javascript">
-        $(document).ready(function(){            
-             $('.chk').on('click', 'checkbox', function() {
-                 aler('3333');
-                 
-             });
-        });
-        
-        </script>  -->       
-            
+   
         <script type="text/javascript">
             
                  
                  
             function edinput(chkelement){
-//                alert("===> "+chkelement.value+" == > "+document.getElementById("percentual_tax_"+chkelement.value));
                 var inputElement =  document.getElementById("percentual_tax_"+chkelement.value);
                 if(chkelement.checked == true){
                     inputElement.removeAttribute("disabled"); 
@@ -62,38 +27,13 @@ $tax = DB::results("SELECT * FROM taxation");
                     inputElement.setAttribute("required","required");   
                     inputElement.focus();
                 }else{
-//                   element.value    
                     inputElement.value="";
                     inputElement.style.backgroundColor="#eee";
                     inputElement.style.borderColor="";
 
                    inputElement.setAttribute("disabled","disabled");
                    inputElement.removeAttribute("required");                                                        
-                }
-               
-                
-                
-             
-                /*
-                    chkelement.id
-                    chkelement.name
-                    chkelement.className                
-                    
-                    chkelement.outerHTML
-                    chkelement.innerHTML
-                */
-  /*              var input = document.createElement('input');
-                    input.setAttribute("type","text");                   
-                    input.setAttribute("class","chk chk-tax");
-                    input.setAttribute("name","percenual_"+chkelement.id);
-
-               chkelement.append("<input type='text' />"); */
-//               chkelement.appendChild(input); 
-//               chkelement.appendChild("<input type='text' name='percentual_"+chkelement.value+"' value=''>"); 
-//               alert(   chkelement.className         ) ;
-                
-                
-                
+                }                
             }
         </script>
         <style>
@@ -169,49 +109,13 @@ $tax = DB::results("SELECT * FROM taxation");
                     </div>
                     <div class="row">
                         <div class="col">
-                           
-<!--                            
-                            <select multiple style="width: 100%; overflow:auto;">
-                                <option>item 1</option>
-                                <option>item 1</option>
-                                <option>item 1</option>
-                                <option>item 1</option>
-                                <option>item 1</option>
-                                <option>item 1</option>
-                            </select>
-                            
-                            <select name="tax[]" multiple>
-                                
-                                <?php //foreach($tax as $k => $v){ ?>
-                                <option value="" >
-                                    <span> <?php// echo $v->name;?> </span>
-                                    <input type="text" class="inputChk" id="percentual_tax_<?php// echo $v->id; ?>" name="percentual[<?php// echo $v->id; ?>]"  disabled />
-                                </option>
-                                <?php// } ?>                                    
-                            </select>
-                            -->
-                            
-                       
-                            
+   
                             <label for="taxation">Selecionar Impostos:</label>
                             <div id="taxation">
-                                <?php $cont=0;
-//                                echo "<div class='row'>";
-//                                    echo "<div class='col col-2' >";
+                                <?php
+                                
                                     foreach($tax as $k => $v){ 
-                                        $cont++;
-
-                                 /*   echo ($cont ==  4 ? "</div>" :"");                                        
-                                    echo ($k % 4==0 ? "<div class='row'>" :"");
-                                    echo ($cont ==  2 ? "</div>" :"");                                        
-                                    echo ($k % 2==0 ? "<div class='col col-2'>" :"");*/
-//                                              echo ($cont ==  4 ? "</div><div class='row'>" :""); 
-//                                    echo ($cont ==  2 ? "</div><div class='col col-2'>" :""); 
-                                   
-                                        
-                                    if($cont == 4){
-                                        $cont=0;    
-                                    }
+                                
                                 ?>
                                 <div class="taxItem">
                                     <label>                        
@@ -221,27 +125,14 @@ $tax = DB::results("SELECT * FROM taxation");
                                     </label>  
                                 </div>
                             <?php 
-                          
-                                
-                                        
-                                        
-                                         $cont++;
-//                                    echo ($k % 4==0 ? "</div>" :"");
-
+                              
                                 } 
-//                                echo "</div></div>";
                                 
                             ?>                
                             </div>
                         </div>
-                    </div>
-                
+                    </div>                
                 </div>
-                
-              
-                
-                
-
                 
                 <div class="buttons-box">
                     <button class="btn btn-save" type="submit" >Salvar</button>

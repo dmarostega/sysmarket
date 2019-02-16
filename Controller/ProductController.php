@@ -13,13 +13,6 @@ class ProductController extends Controller{
     }
     
     public function save($id="-1"){
-      /*var_dump(*///$id = intval($id['id'])/*)*/;
-        
-        //$id=$id['id'];
-//        exit;
-    //    var
-//           var_dump("CONTROLLER",$id);exit;
-
         foreach($_POST as $k => $v){
             parent::model()->$k = $v;
         }
