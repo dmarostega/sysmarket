@@ -42,21 +42,22 @@
                             </li>
                         </ul>
                     </li>
-                    <li  class="drop-down">
-                        <a href="#">Listagens</a>
-                        <ul>
-                            <li>
-                                <a href="/<?php echo DOMAIN;?>/product/listar">Produtos</a>
-                            </li>
-                            <li>
-                                <a href="/<?php echo DOMAIN;?>/typeproduct/listar">Tipos de Produto</a>
-                            </li>
-                            <li>
-                                <a href="/<?php echo DOMAIN;?>/taxation/listar">Impostos</a>
-                            </li>
-                        </ul>                       
-                    </li> 
-                    <li  class="drop-down">
+                
+                <li  class="drop-down">
+                    <a href="#">Listagens</a>
+                    <ul>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/product/listar">Produtos</a>
+                        </li>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/typeproduct/listar">Tipos de Produto</a>
+                        </li>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/taxation/listar">Impostos</a>
+                        </li>
+                    </ul>                       
+                </li>
+                     <li  class="drop-down">
                         <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>  
                         <ul>
                             <li>
@@ -73,17 +74,14 @@
                 <tfoot>                                                  
                 </tfoot>
                 <tbody>
-                   <?php foreach($data as $k => $product){ ?>
-                        <tr id="edit_<?php echo $product->id?>">                       
-                            <td><?php echo $product->id?></td>
-                            <td><?php echo $product->name?></td>
-                            <td><?php echo $product->description?></td>
-                            <td><?php echo "R$ " . number_format($product->unitvalue, 2, ',', '.')?></td>
-                            <td><?php echo $product->quantity?></td> 
+                   <?php foreach($data as $k => $taxation){ ?>
+                        <tr id="edit_<?php echo $taxation->id?>">                       
+                            <td><?php echo $taxation->id?></td>
+                            <td><?php echo $taxation->name?></td>
+                            <td><?php echo $taxation->description?></td>                            
                             <td>
-                                <a class="btn btn-save" href="editar?id=<?php echo $product->id; ?>" ><span>Editar</span>
-</a>
-                                <a class="btn btn-cancel" href="delete?id=<?php echo $product->id; ?>"  ><span>Excluir</span></a>                                
+                                <a class="btn btn-save"  class="btn btn-save" href="editar?id=<?php echo $taxation->id; ?>" ><span>Editar</span></a>
+                                <a class="btn btn-cancel"  href="delete?id=<?php echo $taxation->id; ?>"  ><span>Excluir</span></a>                                
                             </td>
                         </tr>
                     <?php   }   ?>   

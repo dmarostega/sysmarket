@@ -126,10 +126,29 @@ $tax = DB::results("SELECT * FROM taxation");
                         </li>
                     </ul>
                 </li>
+           
                 <li  class="drop-down">
-                    <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>
-                   <!---->
-                </li>                
+                    <a href="#">Listagens</a>
+                    <ul>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/product/listar">Produtos</a>
+                        </li>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/typeproduct/listar">Tipos de Produto</a>
+                        </li>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/taxation/listar">Impostos</a>
+                        </li>
+                    </ul>                       
+                </li>   
+                <li  class="drop-down">
+                        <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>  
+                        <ul>
+                            <li>
+                                <a href="/<?php echo DOMAIN;?>/sell/listar">Listagem</a>
+                            </li>
+                        </ul>
+                    </li>                 
             </ul>
         </nav>            
         <main>
@@ -227,7 +246,7 @@ $tax = DB::results("SELECT * FROM taxation");
                 <div class="buttons-box">
                     <button class="btn btn-save" type="submit" >Salvar</button>
     <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
-                    <button class="btn btn-cancel"  type="button" >Cancelar</button>                
+                    <button class="btn btn-cancel"  onclick="window.location.href='/<?php echo DOMAIN; ?>/typeproduct/listar'" type="button" >Cancelar</button>                
                 </div>
             </form>            
         </main>

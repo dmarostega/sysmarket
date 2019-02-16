@@ -26,16 +26,25 @@ class DB{
 	}
 
 
-	public static function execution($sqlQuery){
+	public static function execution($sqlQuery,$bindparams=array()){
 			$stmt = self::prepare($sqlQuery);
-			$stmt->execute();
+			$stmt->execute($bindparams);
 	}
     
 	public static function insert($sqlquery,$bindparams=array()){
         $stmt = self::prepare($sqlquery);
 		$stmt->execute($bindparams);		
 	}
-
+    
+    public static function update($sqlquery,$bindparams=array()){
+        
+        var_dump($sqlquery,$bindparams);
+//        exit;
+//        exit;
+        $stmt = self::prepare($sqlquery);
+		$stmt->execute($bindparams);		
+	}
+    
 	public static function results($sqlquery){
 		$stmt = self::prepare($sqlquery);
 		$stmt->execute();

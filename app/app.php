@@ -89,7 +89,7 @@ class App{
 					
 							if(method_exists(self::$controller,self::$action)){
 								$action = self::$action;
-								self::$controller->$action(Request::Parameters()/*(!empty(self::$exploded[4]) ? self::$exploded[4] : null)*/ );
+								self::$controller->$action( Request::Parameters());
 							}elseif(isset($_GET["k"]) && strpos($_GET["k"],	"json") ) {
 
 								// echo "<h3>In App action</h3>";

@@ -25,9 +25,29 @@
                 </li>
             </ul>
         </li>
+
         <li  class="drop-down">
-            <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>           
-        </li>                
+            <a href="#">Listagens</a>
+            <ul>
+                <li>
+                    <a href="/<?php echo DOMAIN;?>/product/listar">Produtos</a>
+                </li>
+                <li>
+                    <a href="/<?php echo DOMAIN;?>/typeproduct/listar">Tipos de Produto</a>
+                </li>
+                <li>
+                    <a href="/<?php echo DOMAIN;?>/taxation/listar">Impostos</a>
+                </li>
+            </ul>                       
+        </li> 
+        <li  class="drop-down">
+            <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>  
+            <ul>
+                <li>
+                    <a href="/<?php echo DOMAIN;?>/sell/listar">Listagem</a>
+                </li>
+            </ul>
+        </li> 
     </ul>
 </nav>            
         <style>
@@ -54,7 +74,7 @@
         <main>
             <form action="save" method="POST">                
                 <label for="id">Código</label>
-                <input type="text" id="id" name="id" value="code" readonly>
+                <input type="text" id="id" name="id" value="" readonly>
                 
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" value="" placeholder="Nome do Produto">
@@ -66,7 +86,7 @@
                 <div class="buttons-box">
                     <button class="btn btn-save" type="submit" >Salvar</button>
     <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
-                    <button class="btn btn-cancel"  type="button" >Cancelar</button>                
+                    <button class="btn btn-cancel" onclick="window.location.href='/<?php echo DOMAIN; ?>/taxation/listar'" type="button" >Cancelar</button>                
                 </div>
             </form>            
         </main>

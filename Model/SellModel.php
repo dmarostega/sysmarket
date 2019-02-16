@@ -18,6 +18,12 @@ class SellModel extends Model{
         }      
     }
     
-    public function update($id){        
+   
+    public function update($id){
+    }
+    
+    public function delete($id){
+        $strUpdate = "DELETE FROM ".$this->table." WHERE id = :id; ";        
+        DB::execution($strUpdate,array($id));
     }
 }

@@ -39,7 +39,9 @@ CREATE TABLE product(
  description VARCHAR (50) NOT NULL,
  unitValue FLOAT NOT NULL,
  quantity INTEGER NOT NULL,
- idtypeProduct serial NOT NULL
+ idtypeProduct serial NOT NULL,	
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    updated_at DATE
 );
 
 DROP TABLE public.sell;

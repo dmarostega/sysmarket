@@ -23,9 +23,8 @@
                 width: 50%;
                 margin: auto;
             }
-        </style>
-
-    </head>
+        </style>        
+    </head>  
     <body>
            <nav>
                 <ul>
@@ -42,7 +41,8 @@
                                 <a href="/<?php echo DOMAIN;?>/taxation/cadastrar">Impostos</a>
                             </li>
                         </ul>
-                    </li>                   
+                    </li>
+              
                     <li  class="drop-down">
                         <a href="#">Listagens</a>
                         <ul>
@@ -56,7 +56,7 @@
                                 <a href="/<?php echo DOMAIN;?>/taxation/listar">Impostos</a>
                             </li>
                         </ul>                       
-                    </li>
+                    </li> 
                     <li  class="drop-down">
                         <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>  
                         <ul>
@@ -68,47 +68,25 @@
                 </ul>
             </nav>          
         <main>
-            <form action="save" method="POST">
-                
-                <div class="row">
-                    <div class="col col-2">
-                        <label for="id">Código</label>
-                        <input type="text" id="id" name="id" value="" readonly>
-                
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" value="" placeholder="Nome do Produto" required>
-                    </div>
-                    <div class="col col-2">
-                        <label for="description">Descrição</label>
-                        <input type="text" id="description" name="description" value="" placeholder="Descrição do produto">
-
-                        <label for="unitvalue">Valor Unitário</label>
-                        <input type="text" id="unitvalue" name="unitvalue" value="" placeholder="Valor" required>
-                        
-                         <label for="quantity">Quantidade</label>
-                        <input type="text" id="quantity" name="quantity" value="" placeholder="Quantidade estoque" required>
-                    </div>
-                </div>
-
-                      
-                <div class="row">
-                    <div class="col col-2">
-                        <label for="typeproduct">Categoria</label>
-                        <select id="typeproduct" name="idtypeproduct" required>                    
-                            <option value="0">Selecione</option>
-                            <?php foreach(DB::results("SELECT * FROM public.typeproduct ORDER BY id ASC ") as $v){ ?>
-                             <option value="<?php echo $v->id; ?>"><?php echo $v->name; ?></option>                    
-                            <?php } ?>
-                        </select>                                
-                    </div>
-                </div>
-                
-                <div class="buttons-box">
-                    <button class="btn btn-save" type="submit" >Salvar</button>
-    <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
-                    <button class="btn btn-cancel" onclick="window.location.href='/<?php echo DOMAIN; ?>/product/listar'" type="button" >Cancelar</button>                
-                </div>
-            </form>            
+            <?php ?>
+            <table class="table">
+                <thead></thead>
+                <tfoot>                                                  
+                </tfoot>
+                <tbody>
+                   <?php foreach($data as $k => $typeProduct){ ?>
+                        <tr id="edit_<?php echo $typeProduct->id?>">                       
+                            <td><?php echo $typeProduct->id?></td>
+                            <td><?php echo $typeProduct->name?></td>
+                            <td><?php echo $typeProduct->description?></td>                         
+                            <td>
+                                <a class="btn btn-save"  href="editar?id=<?php echo $typeProduct->id; ?>" ><span>Editar</span></a>
+                                <a class="btn btn-reset" href="delete?id=<?php echo $typeProduct->id; ?>"  ><span>Excluir</span></a>                                
+                            </td>
+                        </tr>
+                    <?php   }   ?>   
+                </tbody>
+            </table>           
         </main>
         <footer>
             <p>Copyright &copy; Diogo Marostega de Oliveira - 2019</p>

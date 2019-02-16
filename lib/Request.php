@@ -13,7 +13,9 @@ class Request {
     
     private static function init(){
         self::$url = $_SERVER["REQUEST_URI"];
-        
+               
+//        var_dump(self::$url);
+
         $blown=explode("/",self::$url);
         
         array_shift($blown); //Remove espaço em branco
@@ -28,8 +30,15 @@ class Request {
         if(strpos(self::$action,"?") ){
             $actionBlown=explode("?",self::$action);
             self::$action=array_shift($actionBlown);                  
-            self::$parameters = explode("&",array_shift($actionBlown));
+            $parametersBlown = explode("&",array_shift($actionBlown));
+           
+            foreach($parametersBlown as $k => $v ){
+                    list($key,$value) = explode("=",$v);
+                    self::$parameters[$key] = $value;
+            }
         }
+        
+//        var_dump(self::$parameters);
             //self::$action = self::$action."Model";
         /*
         /venda?ola=111&dois=34

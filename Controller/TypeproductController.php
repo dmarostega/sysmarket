@@ -16,13 +16,26 @@ class TypeproductController extends Controller{
         foreach($_POST as $k => $v){
             parent::model()->$k = $v;
         }
-        
-        if($id!="-1"){
+        if($id==NULL){
             parent::model()->insert();
         }else{
-            parent::model()->update($id);
-        }
+            parent::model()->update(intval($id["id"]));
+        }    
         
-        header("Location: /".DOMAIN."/index"); 
+        header("Location: /".DOMAIN."/Typeproduct"); 
+    }
+       
+    public function listar(){
+        parent::View('listar',parent::model()->findAll());
+    }
+    
+    public function editar($id){        
+        
+        parent::View('editar',parent::model()->find($id['id']));
+    }
+    
+    public function delete($id){
+        parent::model()->delete($id['id']);
+        parent::View('listar',parent::model()->findAll());
     }
 }

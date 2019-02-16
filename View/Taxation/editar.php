@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li  class="drop-down">
                         <a href="#">Listagens</a>
                         <ul>
@@ -58,61 +58,32 @@
                             </li>
                         </ul>                       
                     </li> 
-                  <li  class="drop-down">
+                    <li  class="drop-down">
                         <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>  
                         <ul>
                             <li>
                                 <a href="/<?php echo DOMAIN;?>/sell/listar">Listagem</a>
                             </li>
                         </ul>
-                    </li> 
+                    </li>                    
                 </ul>
             </nav>          
-        <main>
-            <form action="save?id=<?php echo $data->id; ?>" method="POST">
+       <main>
+            <form action="save?id=<?php echo $data->id; ?>" method="POST">                
+                <label for="id">Código</label>
+                <input type="text" id="id" name="id" value="<?php echo $data->id;?>" readonly>
                 
-                <div class="row">
-                    <div class="col col-2">
-                        <label for="id">Código</label>
-                        <input type="text" id="id" name="id" 
-                                value="<?php echo $data->id; ?>"  readonly>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" value="<?php echo $data->name;?>" placeholder="Nome do Produto">
                 
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" value="<?php echo $data->name; ?>" placeholder="Nome do Produto"  
-                                 required>
-                    </div>
-                    <div class="col col-2">
-                        <label for="description">Descrição</label>
-                        <input type="text" id="description" name="description" value="<?php echo $data->description; ?>" placeholder="Descrição do produto">
-
-                        <label for="unitvalue">Valor Unitário</label>
-                        <input type="text" id="unitvalue" name="unitvalue" value="<?php echo $data->unitvalue; ?>" placeholder="Valor" required>
-                        
-                         <label for="quantity">Quantidade</label>
-                        <input type="text" id="quantity" name="quantity" value="<?php echo $data->quantity; ?>" placeholder="Quantidade estoque" required>
-                    </div>
-                </div>
-
-                      
-                <div class="row">
-                    <div class="col col-2">
-                        <label for="typeproduct">Categoria</label>
-                        <select id="typeproduct" name="idtypeproduct" required>                    
-                            <option value="0">Selecione</option>
-                            <?php foreach(DB::results("SELECT * FROM public.typeproduct ORDER BY id ASC ") as $v){ ?>
-                             <option value="<?php echo $v->id; ?>" 
-                                        <?php echo ($data->idtypeproduct == $v->id ? " selected " : ""); ?>      >
-                                                <?php echo $v->name; ?>
-                            </option>                    
-                            <?php } ?>
-                        </select>                                
-                    </div>
-                </div>
+                <label for="description">Descrição</label>
+                <input type="text" id="description" name="description" value="<?php echo $data->description;?>" placeholder="Descrição do produto">
+                
                 
                 <div class="buttons-box">
                     <button class="btn btn-save" type="submit" >Salvar</button>
     <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
-                    <button class="btn btn-cancel" onclick="window.location.href='/<?php echo DOMAIN; ?>/product/listar'" type="button" >Cancelar</button>                
+                    <button class="btn btn-cancel" onclick="window.location.href='/<?php echo DOMAIN; ?>/taxation/listar'" type="button" >Cancelar</button>                
                 </div>
             </form>            
         </main>

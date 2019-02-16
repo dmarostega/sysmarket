@@ -14,6 +14,8 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
+            
+//            alert('Carregamento de Teste!!!!');
         
             /*            
             <div class="search">
@@ -153,9 +155,9 @@
                                                     "<td>"+idProduct+"<input type='hidden' name='products[]' value='"+idProduct+"' ></td>"+
                                                     "<td>"+name.toUpperCase()+"</td>"+
                                                     "<td>"+quantity+"<input class='quantity' type='hidden' name='quantity["+idProduct+"]'   value='"+quantity+"' ></td>"+
-                                                    "<td>"+parseFloat(value.totalproductvalue).toFixed(2)+"</td>"+
-                                                    "<td>"+parseFloat(value.totaltax).toFixed(2)+"</td>"+
+                                                    "<td>"+parseFloat(value.totalproductvalue).toFixed(2)+"</td>"+                       
                                                     "<td class='quantityTax'>"+value.quantitytax+"</td>"+
+                                                    "<td>"+parseFloat(value.totaltax).toFixed(2)+"% </td>"+
                                                     "<td class='totalitem'>"+parseFloat(value.totalitem).toFixed(2)+"</td>"+
                                                     "<td><button class='removeItem' type='button' >x</button></td>"+
                                                 "</tr>"
@@ -187,15 +189,20 @@
                         
                         var total=0;
                         var quantityTax=0;
+                        var fullTotalTax=0;
+
                         $("#tableSell").find('tbody > tr').each(function(indice){
                            // alert(indice+" --> "+$(this).find('td').eq(6).text());
-                            total = parseFloat(total)   +   parseFloat($(this).find('td').eq(6).text());
-                            quantityTax = parseFloat(quantityTax)   +   parseFloat($(this).find('td').eq(5).text());
-                            
-                            $("#quantityTax").text(quantityTax.toFixed(2).toString());
-                            $("#fulltotal").text(total.toFixed(2).toString());
-                        }); /*end tablesell find tr*/
+                        //    alert(quantityTax+" ---  "+$(this).find('td').eq(5).text());
+                            quantityTax = parseInt(quantityTax)   +   parseInt( $(this).find('td').eq(4).text() );
+                            fullTotalTax = parseFloat(fullTotalTax)+parseFloat($(this).find('td').eq(5).text());
+                            total = parseFloat(total)   +   parseFloat($(this).find('td').eq(6).text());                            
+                    }); /*end tablesell find tr*/
+//                         alert(quantityTax.toString());
                         
+                            $("#fullTotalTax").text(fullTotalTax.toFixed(2).toString()+"%");
+                            $("#tquantityTax").text(quantityTax.toString());
+                            $("#fulltotal").text("R$ "+total.toFixed(2).toString());
     //                    alert('complete');
                     });//end always; //End post
                      $("#searchProduct").val('');
@@ -221,13 +228,18 @@
             $('#tableSell').on('click', 'button', function() {
                 if( confirm(    'Remover o item ' + $(this).parent().prev().prev().text()   )==true ){
                    $(this).parent().parent().remove();
-                    var total=0;
+                        var total=0;
                         var quantityTax=0;
+                        var fullTotalTax=0;
+                    
                         $("#tableSell").find('tbody > tr').each(function(indice){
-                            total = parseFloat(total)+parseFloat($(this).find('td').eq(6).text());
-                            quantityTax = parseFloat(quantityTax)+parseFloat($(this).find('td').eq(5).text());
-                            $("#quantityTax").text(quantityTax.toString());
-                            $("#fulltotal").text(total.toString());
+                            quantityTax = parseInt(quantityTax)   +   parseInt( $(this).find('td').eq(4).text() );
+                            fullTotalTax = parseFloat(fullTotalTax)+parseFloat($(this).find('td').eq(5).text());
+                            total = parseFloat(total)   +   parseFloat($(this).find('td').eq(6).text());         
+                            
+                            $("#quantityTax").text(quantityTax.toString()+"%");
+                            $("#fullTotalTax").text(fullTotalTax.toString()+"%");
+                            $("#fulltotal").text("R$ "+total.toString());
                         }); /*end tablesell find tr*/
                 }
             }); /*  end tableSell onclick   */
@@ -252,9 +264,28 @@
                         </li>
                     </ul>
                 </li>
+               <li  class="drop-down">
+                    <a href="#">Listagens</a>
+                    <ul>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/product/listar">Produtos</a>
+                        </li>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/typeproduct/listar">Tipos de Produto</a>
+                        </li>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/taxation/listar">Impostos</a>
+                        </li>
+                    </ul>                       
+                </li>
                 <li  class="drop-down">
-                    <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>                   
-                </li>                
+                    <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>  
+                    <ul>
+                        <li>
+                            <a href="/<?php echo DOMAIN;?>/sell/listar">Listagem</a>
+                        </li>
+                    </ul>
+                </li> 
             </ul>
         </nav>        
         <main>
@@ -269,16 +300,17 @@
                                     <td>Produto</td>
                                     <td>Quantidade</td>
                                     <td>Subtotal</td>
-                                    <td>Taxas</td>
                                     <td>Qtd. Taxas</td>
+                                    <td>Taxas</td>                                   
                                     <td>Total</td>
-                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td><!-- excluir -->
                                 </tr>
                             </thead>
                             <tfoot>  
                                 <tr>  
-                                    <td colspan="5">&nbsp;</td>
-                                    <td  ><span id="tquantityTax"></span></td>
+                                    <td colspan="4">&nbsp;</td>
+                                    <td><span id="tquantityTax"></span></td>
+                                    <td><span id="fullTotalTax" ></span></td>
                                     <td><span id="fulltotal"></span></td>
                                 </tr>
                             </tfoot>
