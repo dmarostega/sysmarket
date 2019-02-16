@@ -6,25 +6,53 @@
         <meta name="author" content="Diogo Marostega de Oliveira   ">
         <meta name="description" content="Sistema para mercados">
         <meta name="keywords" content="mercado, sistema, vendas de produtos">
+        <link  rel="stylesheet" type="text/css"  href="../view/css/personalite.css">        
     </head>
     <body>
-          <nav>
+           <nav>
+    <ul>
+        <li class="drop-down">
+            <a href="#">Cadastros</a>
             <ul>
                 <li>
-                    <a href="#">Cadastros</a>
-                    <ul>
-                        <li><a href="/<?php echo DOMAIN;?>/product/cadastrar">Produtos</a></li>
-                        <li><a href="/<?php echo DOMAIN;?>/typeproduct/cadastrar">Tipos de Produto</a></li>
-                        <li><a href="/<?php echo DOMAIN;?>/taxation/cadastrar">Impostos</a></li>
-                    </ul>
+                    <a href="/<?php echo DOMAIN;?>/product/cadastrar">Produtos</a>
                 </li>
                 <li>
-                    <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>
-                </li>                
+                    <a href="/<?php echo DOMAIN;?>/typeproduct/cadastrar">Tipos de Produto</a>
+                </li>
+                <li>
+                    <a href="/<?php echo DOMAIN;?>/taxation/cadastrar">Impostos</a>
+                </li>
             </ul>
-        </nav>         
+        </li>
+        <li  class="drop-down">
+            <a href="/<?php echo DOMAIN;?>/sell/">Vender</a>           
+        </li>                
+    </ul>
+</nav>            
+        <style>
+            form{
+                width: 50%;
+                margin: auto;
+                padding: 15px;
+            }
+            label,div,input{
+                display:block;
+                width: 100%;
+            }
+            .buttons-box{
+                 width: 100%;
+                text-align: center;
+
+            }
+            
+            .buttons-box button{
+                width: 27%;
+            }
+
+        </style>
         <main>
-            <form action="save" method="POST">
+            <form action="save" method="POST">                
                 <label for="id">Código</label>
                 <input type="text" id="id" name="id" value="code" readonly>
                 
@@ -35,9 +63,11 @@
                 <input type="text" id="description" name="description" value="" placeholder="Descrição do produto">
                 
                 
-                <button type="submit" >Salvar</button>
-                <button type="reset" >Limpar</button>
-                <button type="button" class="btn btn-cancel">Cancelar</button>
+                <div class="buttons-box">
+                    <button class="btn btn-save" type="submit" >Salvar</button>
+    <!--                <button class="btn btn-reset" type="reset" >Limpar</button>-->
+                    <button class="btn btn-cancel"  type="button" >Cancelar</button>                
+                </div>
             </form>            
         </main>
         <footer>

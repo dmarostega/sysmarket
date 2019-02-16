@@ -1,0 +1,354 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    
+}
+
+nav{
+    display:block;
+    background-color: rgb(0,145,237);
+    color: white;
+    height:40px;  
+}
+
+body{
+    font-family:sans-serif;
+    color: rgb(0,145,237);
+}
+
+main{   
+    display:block;
+/*    position:absolute;*/
+/*    bottom:*/
+    
+/*    height: 600px;*/
+}
+
+footer{
+    background: black;
+    color: rgba(178, 178, 178, 0.58);
+    height: 50px;
+}
+footer p{
+    font-size: 12px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 1px;
+    }
+
+input:focus{
+    outline: none;
+}
+input[type="text"],input[type="number"],select{
+    padding:5px;
+    border:2px solid transparent;
+    border-radius: 5px;
+    background: #eee;
+}
+input[type="text"]:focus,input[type="number"]:focus{
+    border:2px solid rgba(92, 133, 214, 0.92);;
+}
+.inputChk{
+    width: 60px;
+}
+/*  BUTTONS */
+.btn{
+    background-color: rgb(0,145,237);
+    border: 1px solid transparent;  
+    border-radius:5px;
+    padding: 10px;    
+    font-size:14px;
+    color:white;
+    margin:5px;
+    margin:5px;
+    box-shadow: 2px 2px 2px gray;
+    transition: background .2s;
+}
+.btn-save{
+    background-color:#568456;    
+}
+.btn-save:hover{
+     background-color: #1e621e;
+}
+.btn-cancel{
+    background-color:#9f1414;
+}
+.btn-cancel:hover{
+     background-color: #712222;
+}
+.btn-reset{
+    background-color:#868686;
+}
+.btn-reset:hover{
+     background-color: #464646;
+}
+.btn-insert-product{
+    padding: 5px 8px;
+    border-color: transparent;
+    background-color: rgb(0,145,237);
+    color: white; 
+    border-radius: 20px;
+    transition: background .2s;
+}
+
+.btn-insert-product:hover{
+    background: #2161c7;
+    box-shadow: 2px 2px 2px gray;
+/*    border: none;*/
+/*    background: #3171d8;*/
+/*    border:2px solid #0419bc;*/
+}
+
+.btn-insert-product span{
+  /*  visibility: hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;*/
+}
+
+/*  not working
+.btn-insert-product:afer{
+    content:" Ins.";
+    color: white;
+    font-size:18px;
+    font-weight: 400;
+    margin-right: 15px;    
+}
+*/
+.buttons-box{
+/*    border: 1px solid red;*/
+    width: 30%;
+/*    float:right;*/
+    clear:both;
+    margin:auto;
+}
+
+.buttons-box > button{
+    display: inline-box;
+    width: 46%;
+/*    width: 5em;*/
+}
+.removeItem{
+    border-color: transparent;
+    display:inline-block;
+    width: 80%;
+    border-radius: 15px;
+    margin:auto;
+    color: white;
+    font-weight: bold;
+    box-shadow: 2px 1px gray;
+/*
+    width: 20px;
+    height: 20px;
+*/
+/*    line-height: 20px;*/
+/*    border-radius: 40%;*/
+/*    padding: 5px;*/
+    background-color: #fc1919;    
+}
+
+/*  DROP-DOWNS*/
+.drop-down{
+    position: relative;
+    top:inherit;
+    display: inline-block;
+}
+.drop-down  a{
+    display: block;
+    padding: 10px 8px;
+}
+.drop-down ul{
+    margin-top:1px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /*h-offset v-offset blur spread color*/
+    box-shadow: 2px 2px 2px gray;
+    position:absolute;
+    background:white;
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;  
+    overflow: hidden;
+}
+.drop-down ul li:hover{
+    background: rgba(177, 177, 177, 0.19);    
+}
+.drop-down ul li a{
+    color: rgb(51,60,78);
+}
+.drop-down ul > li{
+    width:220px;
+}
+.drop-down a:hover{
+/*    color: red;*/
+} 
+.drop-down a:hover + ul,.drop-down ul:hover {
+    display: block;
+    width: auto;
+    height: auto;
+    visibility: visible;  
+    overflow: auto;
+}
+.drop-down ul:hover{
+}
+
+/*  TABLES  */
+.table{
+    width:100%;
+    height:80%;
+    font-size:13px;
+}
+.table thead {
+    color: white;
+    font-size:12px;
+    background-color: rgba(92, 133, 214, 0.92);    
+}
+table{
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+    background: #eee;
+    color: black;
+/*    background: rgba(207, 211, 212, 0.65);*/
+}            
+table caption{
+    text-align: center;
+    font-size:16px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+table td .quantity{
+    background-color: white;
+    border:1px solid #ddd;
+    width:35px;
+    z-index: 1;
+}
+th{
+    background: #bfc361;
+    border: 1px solid chocolate;
+    
+}
+td{
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 5px 5px;
+}
+
+/*  GRID    */
+.row{
+    width: 100%;
+    overflow: auto;
+}
+
+.col{
+/*    border:1px solid red;*/
+    padding: 10px 5px;
+    float: left;
+    box-sizing: border-box;
+}
+.col-unique{
+/*    float:none;*/
+    text-align:center;
+}
+.col-2{
+    width: 50%;   
+}
+.col-2-3{
+    width:66%;
+}
+.col-1-3{
+    width:32%
+}
+
+.row-search{
+    width: 80%;
+    margin:auto;
+/*    border:1px solid red;*/
+}
+.row-search>div{
+    float:left;
+    margin-top:12px;     
+}
+.row-search div:first-child{
+    width: 20%;    
+}
+.row-search div:nth-child(2){
+    width: 50%;
+}
+.row-search div:last-child{
+    width: 30%;    
+}
+.row-search >  div input[type="number"]{
+    display: inline-block;
+    width: 35px;
+    margin-right: 4px;
+}
+
+/*  SEARCH  */
+.search{
+    border: 1px solid rgba(141, 141, 141, 0.9);
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.search > * {
+    display:block;  
+}
+.search > input[type="text"]{
+    width: 100%;
+    box-sizing: border-box;    
+}
+
+/*  for typeproduct txa */
+ #taxation{
+/*    width:100%;*/
+    margin:0 auto;
+}
+#taxation > div {
+    width: 19.45%;
+    margin-bottom:5px;
+    border: 2px solid rgb(0,145,237);
+    border-radius: 5px;
+    padding: 3px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#taxation .taxItem input[type="text"]{
+    width: 15%;
+    float: right;
+}
+
+#taxation .taxItem span{
+    padding:5px;
+    display: inline-block;
+    width:60%; 
+    background-color: rgb(0,145,237);
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+.chk-tax{
+    width:0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+/*  errors */
+.error{
+    
+    font-size:10px; !important;
+    color: red;
+    padding:3px;
+    display:inline-block;
+/*    width:100%;*/
+    
+}

@@ -67,12 +67,16 @@ class App{
 		*/
         
 //        echo json_encode($_GET)
-
-		if(isset($_GET["k"]) && strpos($_GET["k"],	"json") ) {
+//	var_dump($_GET['k']);
+        
+        		if(isset($_GET["k"]) && strpos($_GET["k"],	"css/") ) {
+                    echo substr($_GET['k'], strpos($_GET['k'], "css/" ) );
+                    include substr($_GET['k'], strpos($_GET['k'], "css/" ) ) ;
+                }elseif(isset($_GET["k"]) && strpos($_GET["k"],	"json") ) {
 
 				// echo "<h3>In App action</h3>";
 				// var_dump($_GET['k']); 	
-				
+			
 				include substr($_GET['k'], strpos($_GET['k'], "/json" ) ) ;
 // exit;
 			}else{

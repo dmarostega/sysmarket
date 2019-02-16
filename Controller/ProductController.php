@@ -25,4 +25,13 @@ class ProductController extends Controller{
         
         header("Location: /".DOMAIN."/Product/cadastrar"); 
     }
+    
+    public function listar(){
+        parent::View('listar',parent::model());
+    }
+    
+    public function editar(){
+        $id=1;
+        parent::View('editar',parent::model()->find($id));
+    }
 }

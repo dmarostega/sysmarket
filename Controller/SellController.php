@@ -24,6 +24,6 @@ class SellController extends Controller{
             parent::model()->update($id);
         }
         
-        header("Location: /".DOMAIN."/index"); 
+        header("Location: /".DOMAIN."/sell/tosell"); 
     }
 }

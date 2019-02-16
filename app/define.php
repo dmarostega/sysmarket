@@ -19,3 +19,6 @@ define("APP","app/");
 
 define("DOMAIN","market");
 
+define('LOCAL_HOST','http://localhost/'.DOMAIN.'');
+//define('LOCAL_HOST','http://'.$_SERVER['HTTP_HOST'].'/'.DOMAIN.'/');
+define('LAYOUT',LOCAL_HOST.'');
