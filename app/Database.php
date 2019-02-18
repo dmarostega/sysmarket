@@ -7,9 +7,10 @@ class DB{
 		if(!isset(self::$instance)){
 			try{
                 $strCon="pgsql:host=".DB_HOST."; dbname=".DB_NAME.";   user=".DB_USER." password=".DB_PASSWORD."; port=5433";
-        
+                
 				self::$instance = new PDO($strCon);
-//				self::$instance = new PDO('pgsql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
+//				self::$instance = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
+
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);				
 			}catch(PDOException $e){

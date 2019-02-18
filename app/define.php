@@ -17,7 +17,8 @@ define("VIEWS",dirname(__FILE__)."/../View/");
 define("LIB","lib/");
 define("APP","app/");
 
-define("DOMAIN","market");
 
-define('LOCAL_HOST','http://localhost/'.DOMAIN.'');
-define('LAYOUT',LOCAL_HOST.'');
+/*
+    informar nome dominio
+*/
+define("DOMAIN","market");
