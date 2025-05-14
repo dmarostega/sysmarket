@@ -1,1 +1,1 @@
-<?php header("Location:sell/tosellr"); exit;?>
+<?php header("Location:sell/tosellr"); ?>

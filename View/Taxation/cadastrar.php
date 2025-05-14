@@ -6,7 +6,7 @@
         <meta name="author" content="Diogo Marostega de Oliveira   ">
         <meta name="description" content="Sistema para mercados">
         <meta name="keywords" content="mercado, sistema, vendas de produtos">
-        <link  rel="stylesheet" type="text/css"  href="../view/css/personalite.css">        
+        <link  rel="stylesheet" type="text/css"  href="/view/css/personalite.css">        
     </head>
     <body>
            <nav>
